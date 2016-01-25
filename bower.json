@@ -1,0 +1,26 @@
+{
+  "name": "knockout-ext",
+  "description": "Extensions for Knockout.js",
+  "main": "dist/knockout-ext.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "knockout"
+  ],
+  "authors": [
+    "SkyKnight"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/SkyKnight/knockout-ext",
+  "dependencies": {
+      "knockout": "*"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

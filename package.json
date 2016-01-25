@@ -1,0 +1,27 @@
+{
+  "name": "knockout-ext",
+  "version": "1.0.0",
+  "description": "Knockout extensions stuff.",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-exec": "^2.1.2",
+    "gulp-tsc": "^1.1.4",
+    "gulp-tsd": "^0.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkyKnight/knockout-ext.git"
+  },
+  "author": "SkyKnight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkyKnight/knockout-ext/issues"
+  },
+  "homepage": "https://github.com/SkyKnight/knockout-ext#readme"
+}
