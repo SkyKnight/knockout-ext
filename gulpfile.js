@@ -1,11 +1,19 @@
 var gulp = require("gulp");
 var exec = require('gulp-exec');
 var tsd = require('gulp-tsd');
-var tsc = require('gulp-tsc');
+var tsc = require('gulp-typescript');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var del = require('del');
+var Server = require('karma').Server;
+
+var paths = {
+  tsSrc: 'src/*.ts',
+  tsTests: 'tests/*.ts',
+  dist: 'dist',
+  tests: 'tests'
+};
 
 gulp.task('npm:install', function(cb) {
     gulp
@@ -39,23 +47,40 @@ gulp.task('tsd', function () {
     gulp.src('./gulp_tsd.json').pipe(tsd());
 });
 
-gulp.task('build', function() {
+gulp.task('build:src', function() {
     gulp
-    .src('src/*.ts')
+    .src(paths.tsSrc)
     .pipe(tsc())
     .pipe(concat('knockout-ext.js'))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(paths.dist))
     .pipe(rename('knockout-ext.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(paths.dist));
 });
+
+gulp.task('build:tests', function() {
+    gulp
+    .src(paths.tsTests)
+    .pipe(tsc())
+    .pipe(gulp.dest(paths.tests));
+});
+
+gulp.task('build', ['build:src', 'build:tests']);
+
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+})
 
 gulp.task('clean', function(cb) {
     del('dist/*', cb);
+    del('tests/*.js', cb);
 });
 
 gulp.task('rebuild', ['clean', 'build']);
 
 gulp.task('watch', ['npm:watch', 'bower:watch']);
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'test']);

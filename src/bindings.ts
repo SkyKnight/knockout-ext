@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-if (typeof (Smart.format) !== 'undefined') {
+if (typeof (Smart) !== 'undefined' && Smart.format) {
     var _textBindingUpdate = ko.bindingHandlers['text'].update;
 
     ko.bindingHandlers['text'].update = (element, valueAccessor, allBindingsAccessor) => {
@@ -8,7 +8,7 @@ if (typeof (Smart.format) !== 'undefined') {
             var va = valueAccessor;
             valueAccessor = () => {
                 var value = ko.utils.unwrapObservable(va());
-                return Smart.format(allBindingsAccessor().format, value);
+                return Smart.format(allBindingsAccessor().format, [value]);
             };
         }
         _textBindingUpdate(element, valueAccessor);
