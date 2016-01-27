@@ -1,4 +1,7 @@
 /// <reference path="../typings/tsd.d.ts" />
+import ko = require('knockout');
+import koext = require('koext-smartformat');
+koext.appendBindings();
 
 describe('Knockout bindings test suite.', () => {
     it('Text binding with format support - basic format.', () => {

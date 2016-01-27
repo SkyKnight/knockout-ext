@@ -1,5 +1,5 @@
 ﻿ 
-declare module Smart {
+declare module "Smart" {
     
     interface ISelector {
         (value, selector:string):any;

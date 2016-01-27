@@ -10,15 +10,13 @@ module.exports = function (config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine', 'requirejs'],
 
 
         // list of files / patterns to load in the browser
         files: [
-            'bower_components/knockout/dist/knockout.debug.js',
-            'libs/*.js',
-            'dist/knockout-ext.js',
-            'tests/*.js'
+            'tests/test-main.js',
+            {pattern: 'tests/*.js', included: false}
         ],
 
 

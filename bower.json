@@ -14,7 +14,8 @@
   "license": "MIT",
   "homepage": "https://github.com/SkyKnight/knockout-ext",
   "dependencies": {
-      "knockout": "*"
+      "knockout": "*",
+      "select2": "*"
   },
   "ignore": [
     "**/.*",

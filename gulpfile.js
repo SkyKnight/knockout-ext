@@ -9,11 +9,17 @@ var del = require('del');
 var Server = require('karma').Server;
 
 var paths = {
-  tsSrc: 'src/*.ts',
-  tsTests: 'tests/*.ts',
+  tsSrc: 'src/koext-*.ts',
+  tsTests: 'src/tests-*.ts',
   dist: 'dist',
   tests: 'tests'
 };
+
+var testsDependencies = [
+    'src/test-main.js',
+    'bower_components/knockout/dist/knockout.js',
+    'libs/*.js'
+];
 
 gulp.task('npm:install', function(cb) {
     gulp
@@ -50,10 +56,12 @@ gulp.task('tsd', function () {
 gulp.task('build:src', function() {
     gulp
     .src(paths.tsSrc)
-    .pipe(tsc())
-    .pipe(concat('knockout-ext.js'))
+    .pipe(tsc({
+        module: 'umd'
+    }))
     .pipe(gulp.dest(paths.dist))
-    .pipe(rename('knockout-ext.min.js'))
+    .pipe(gulp.dest(paths.tests))
+    .pipe(rename({extname: '.min.js'}))
     .pipe(uglify())
     .pipe(gulp.dest(paths.dist));
 });
@@ -61,7 +69,13 @@ gulp.task('build:src', function() {
 gulp.task('build:tests', function() {
     gulp
     .src(paths.tsTests)
-    .pipe(tsc())
+    .pipe(tsc({
+        module: 'umd'
+    }))
+    .pipe(gulp.dest(paths.tests));
+    
+    gulp
+    .src(testsDependencies)
     .pipe(gulp.dest(paths.tests));
 });
 

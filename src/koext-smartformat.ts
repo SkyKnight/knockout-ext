@@ -1,6 +1,9 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-if (typeof (Smart) !== 'undefined' && Smart.format) {
+import ko = require('knockout');
+import Smart = require('Smart');
+
+export function appendBindings() {
     var _textBindingUpdate = ko.bindingHandlers['text'].update;
 
     ko.bindingHandlers['text'].update = (element, valueAccessor, allBindingsAccessor) => {
