@@ -1,7 +1,7 @@
 /// <reference path="../typings/tsd.d.ts" />
+/// <amd-dependency path="koext-smartformat" />
+
 import ko = require('knockout');
-import koext = require('koext-smartformat');
-koext.appendBindings();
 
 describe('Knockout bindings test suite.', () => {
     it('Text binding with format support - basic format.', () => {

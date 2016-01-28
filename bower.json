@@ -15,7 +15,10 @@
   "homepage": "https://github.com/SkyKnight/knockout-ext",
   "dependencies": {
       "knockout": "*",
-      "select2": "*"
+      "select2": "*",
+      "bootstrap": "*",
+      "bootstrap-datepicker": "*",
+      "bootstrap-daterangepicker": "*"
   },
   "ignore": [
     "**/.*",
