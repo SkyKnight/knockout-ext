@@ -8,3 +8,4 @@
 /// <reference path="bootstrap.datepicker/bootstrap.datepicker.d.ts" />
 /// <reference path="flot/jquery.flot.d.ts" />
 /// <reference path="knockout.validation/knockout.validation.d.ts" />
+/// <reference path="daterangepicker/daterangepicker.d.ts" />

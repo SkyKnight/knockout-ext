@@ -12,8 +12,6 @@ ko.bindingHandlers['datepicker'] = {
         var options = allBindingsAccessor().datepickerOptions || {},
             $el = $(element);
 
-        options.language = 'pl'; // @TODO: support for different languages
-
         $el.datepicker(options);
 
         //handle the field changing
@@ -23,7 +21,6 @@ ko.bindingHandlers['datepicker'] = {
         });
 
         ko.utils.registerEventHandler(element, "clearDate", () => {
-            console.log('event fired: clearDate')
             var observable = valueAccessor();
             observable(null);
         });

@@ -10,7 +10,7 @@ ko.bindingHandlers['daterangepicker'] = {
         var options = allBindingsAccessor().daterangepickerOptions || {},
             $el = $(element);
 
-        $el.daterangepicker(options, (start, end) => {
+        $el.daterangepicker(options, (start, end, label) => {
             var observable = valueAccessor();
             observable({ start: new Date(start), end: new Date(end) });
         });
@@ -35,7 +35,8 @@ ko.bindingHandlers['daterangepicker'] = {
         if (typeof (value.end) !== 'undefined')
             $el.data('daterangepicker').setEndDate(utils.tryFixDate(value.end));
 
-        if ((typeof (value.start) == 'undefined' || value.start == null) && (typeof (value.end) == 'undefined' || value.end == null))
+        if ((typeof (value.start) == 'undefined' || value.start == null) 
+            && (typeof (value.end) == 'undefined' || value.end == null))
             $el.val('');
     }
 };
